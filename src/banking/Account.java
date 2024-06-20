@@ -13,6 +13,7 @@ public class Account {
 		this.name = name;
 		this.accountNum = accountNum;
 		this.money = money;
+		this.bankAccount = new Account[0];
 	}
 	
 	void showMenu() {
