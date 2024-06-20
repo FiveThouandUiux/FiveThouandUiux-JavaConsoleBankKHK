@@ -34,7 +34,6 @@ public class Account {
 		System.out.println("잔고 : "); aMoney = scan.nextInt();
 		System.out.println("계좌계설이 완료되었습니다");
 		
-		
 		bankAccount[numOfAccount++] = new Account(aName, aAccountNum, aMoney);
 		
 	}
