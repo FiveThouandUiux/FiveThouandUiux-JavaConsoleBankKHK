@@ -7,6 +7,7 @@ public class BankingSystemMain {
 	public static void main(String[] args) {
 		
 		Account account = new Account(null, null, 0);
+		AccountManager manager = new AccountManager();
 		
 		while(true) {
 			account.showMenu();

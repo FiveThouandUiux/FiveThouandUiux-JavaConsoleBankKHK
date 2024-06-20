@@ -6,14 +6,15 @@ public class Account {
 	
 	String name, accountNum;
 	int money;
-	private Account[] bankAccount;
-	private int numOfAccount=0;
+	public Account[] bankAccount;
+	public int numOfAccount;
 	
 	public Account(String name, String accountNum, int money) {
 		this.name = name;
 		this.accountNum = accountNum;
 		this.money = money;
-		this.bankAccount = new Account[0];
+		this.numOfAccount=0;
+		this.bankAccount = new Account[9999];
 	}
 	
 	void showMenu() {
@@ -30,13 +31,15 @@ public class Account {
 		String aName, aAccountNum;
 		int aMoney;
 		System.out.println("***신규계좌개설***");
-		System.out.println("계좌번호 : "); aAccountNum = scan.nextLine();
-		System.out.println("고객이름 : "); aName = scan.nextLine();
-		System.out.println("잔고 : "); aMoney = scan.nextInt();
+//		System.out.println("1.보통계좌");
+//		System.out.println("2.신용신뢰계좌");
+		
+		System.out.print("계좌번호 : "); aAccountNum = scan.nextLine();
+		System.out.print("고객이름 : "); aName = scan.nextLine();
+		System.out.print("잔고 : "); aMoney = scan.nextInt();
 		System.out.println("계좌계설이 완료되었습니다");
 		
 		bankAccount[numOfAccount++] = new Account(aName, aAccountNum, aMoney);
-		
 	}
 	
 	void depositMoney() {
@@ -48,8 +51,8 @@ public class Account {
 		for(int i=0; i<numOfAccount; i++) {
 			if(searchAccountNum.compareTo(bankAccount[i].accountNum)==0) {
 				System.out.println("계좌번호 : "+bankAccount[i].accountNum);
+				System.out.print("입금액 : ");
 				int pushMoney = scan.nextInt();
-				System.out.println("입금액 : "+pushMoney);
 				System.out.println("입금이 완료되었습니다");
 				bankAccount[i].money += pushMoney;
 			} else {
@@ -68,7 +71,7 @@ public class Account {
 			if(searchAccountNum.compareTo(bankAccount[i].accountNum)==0) {
 				System.out.println("계좌번호 : "+bankAccount[i].accountNum);
 				int pullMoney = scan.nextInt();
-				System.out.println("출금액 : "+pullMoney);
+				System.out.print("출금액 : "+pullMoney);
 				if(bankAccount[i].money<pullMoney) {
 					System.out.println("잔고가 부족합니다.");
 				} else {
@@ -83,11 +86,13 @@ public class Account {
 	
 	void showAccInfo() {
 		System.out.println("***계좌정보출력***");
+		for(int i=0; i<numOfAccount; i++) {
 		System.out.println("---------------");
-		System.out.println("계좌번호 : "+accountNum);
-		System.out.println("고객이름 : "+name);
-		System.out.println("잔고 : "+money);
+		System.out.println("계좌번호 : "+bankAccount[i].accountNum);
+		System.out.println("고객이름 : "+bankAccount[i].name);
+		System.out.println("잔고 : "+bankAccount[i].money);
 		System.out.println("---------------");
+		}
 		System.out.println("전체계좌정보 출력이 완료되었습니다");
 		
 	}
